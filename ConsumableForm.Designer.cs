@@ -49,10 +49,20 @@
             label9 = new System.Windows.Forms.Label();
             button1 = new System.Windows.Forms.Button();
             button2 = new System.Windows.Forms.Button();
+            label10 = new System.Windows.Forms.Label();
+            boyCheckBox = new System.Windows.Forms.CheckBox();
+            boySlider = new System.Windows.Forms.TrackBar();
+            speedupSlider = new System.Windows.Forms.TrackBar();
+            speedupCheckBox = new System.Windows.Forms.CheckBox();
+            speeddownSlider = new System.Windows.Forms.TrackBar();
+            speeddownCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBar2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBar3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBar4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)boySlider).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)speedupSlider).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)speeddownSlider).BeginInit();
             SuspendLayout();
             // 
             // nameBox
@@ -238,11 +248,87 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new System.Drawing.Point(10, 480);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(89, 15);
+            label10.TabIndex = 21;
+            label10.Text = "Ekstra Özellikler";
+            // 
+            // boyCheckBox
+            // 
+            boyCheckBox.AutoSize = true;
+            boyCheckBox.Location = new System.Drawing.Point(10, 520);
+            boyCheckBox.Name = "boyCheckBox";
+            boyCheckBox.Size = new System.Drawing.Size(85, 19);
+            boyCheckBox.TabIndex = 22;
+            boyCheckBox.Text = "Boy Uzama";
+            boyCheckBox.UseVisualStyleBackColor = true;
+            boyCheckBox.CheckedChanged += boyCheckBox_CheckedChanged;
+            // 
+            // boySlider
+            // 
+            boySlider.Location = new System.Drawing.Point(113, 520);
+            boySlider.Maximum = 3;
+            boySlider.Name = "boySlider";
+            boySlider.Size = new System.Drawing.Size(175, 45);
+            boySlider.TabIndex = 23;
+            boySlider.Visible = false;
+            // 
+            // speedupSlider
+            // 
+            speedupSlider.Location = new System.Drawing.Point(113, 560);
+            speedupSlider.Maximum = 4;
+            speedupSlider.Name = "speedupSlider";
+            speedupSlider.Size = new System.Drawing.Size(175, 45);
+            speedupSlider.TabIndex = 25;
+            speedupSlider.Visible = false;
+            // 
+            // speedupCheckBox
+            // 
+            speedupCheckBox.AutoSize = true;
+            speedupCheckBox.Location = new System.Drawing.Point(10, 560);
+            speedupCheckBox.Name = "speedupCheckBox";
+            speedupCheckBox.Size = new System.Drawing.Size(73, 19);
+            speedupCheckBox.TabIndex = 24;
+            speedupCheckBox.Text = "Hızlandır";
+            speedupCheckBox.UseVisualStyleBackColor = true;
+            speedupCheckBox.CheckedChanged += speedupCheckBox_CheckedChanged;
+            // 
+            // speeddownSlider
+            // 
+            speeddownSlider.Location = new System.Drawing.Point(113, 603);
+            speeddownSlider.Maximum = 4;
+            speeddownSlider.Name = "speeddownSlider";
+            speeddownSlider.Size = new System.Drawing.Size(175, 45);
+            speeddownSlider.TabIndex = 27;
+            speeddownSlider.Visible = false;
+            // 
+            // speeddownCheckBox
+            // 
+            speeddownCheckBox.AutoSize = true;
+            speeddownCheckBox.Location = new System.Drawing.Point(10, 603);
+            speeddownCheckBox.Name = "speeddownCheckBox";
+            speeddownCheckBox.Size = new System.Drawing.Size(68, 19);
+            speeddownCheckBox.TabIndex = 26;
+            speeddownCheckBox.Text = "Yavaşlat";
+            speeddownCheckBox.UseVisualStyleBackColor = true;
+            speeddownCheckBox.CheckedChanged += speeddownCheckBox_CheckedChanged;
+            // 
             // ConsumableForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(381, 476);
+            ClientSize = new System.Drawing.Size(386, 660);
+            Controls.Add(speeddownSlider);
+            Controls.Add(speeddownCheckBox);
+            Controls.Add(speedupSlider);
+            Controls.Add(speedupCheckBox);
+            Controls.Add(boySlider);
+            Controls.Add(boyCheckBox);
+            Controls.Add(label10);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(pointBox);
@@ -270,6 +356,9 @@
             ((System.ComponentModel.ISupportInitialize)trackBar2).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBar3).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBar4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)boySlider).EndInit();
+            ((System.ComponentModel.ISupportInitialize)speedupSlider).EndInit();
+            ((System.ComponentModel.ISupportInitialize)speeddownSlider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -297,5 +386,12 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox boyCheckBox;
+        private System.Windows.Forms.TrackBar boySlider;
+        private System.Windows.Forms.TrackBar speedupSlider;
+        private System.Windows.Forms.CheckBox speedupCheckBox;
+        private System.Windows.Forms.TrackBar speeddownSlider;
+        private System.Windows.Forms.CheckBox speeddownCheckBox;
     }
 }

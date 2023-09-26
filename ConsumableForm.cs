@@ -57,6 +57,7 @@ namespace StajProje2
                 return;
             }
 
+
             ConsumableClass newConsumable = new ConsumableClass()
             {
                 Name = nameBox.Text,
@@ -65,11 +66,18 @@ namespace StajProje2
                 SpawnRate = float.Parse(periodBox.Text),
                 Point = float.Parse(pointBox.Text),
                 Color = Color.FromArgb(trackBar4.Value, trackBar1.Value, trackBar2.Value, trackBar3.Value),
+                expand = 0,
+                speeddown = 0,
+                speedup = 0,
             };
+            if (boyCheckBox.Checked == true) newConsumable.expand = boySlider.Value;
+            if (speeddownCheckBox.Checked == true) newConsumable.speeddown = speeddownSlider.Value;
+            if (speedupCheckBox.Checked == true) newConsumable.speedup = speedupSlider.Value;
 
             try
             {
-                string metin = newConsumable.Name + ";" + newConsumable.Lifetime + ";" + newConsumable.SpawnRate + ";" + newConsumable.Point + ";" + newConsumable.Color + ";" + newConsumable.Description;
+                string metin = newConsumable.Name + ";" + newConsumable.Lifetime + ";" + newConsumable.SpawnRate + ";" + newConsumable.Point + ";" + newConsumable.Color + ";" +
+                    newConsumable.Description + ";" + newConsumable.expand + ";" + newConsumable.speeddown + ";" + newConsumable.speedup;
                 File.AppendAllText(consumableTxtPath, Environment.NewLine + metin);
             }
             catch (Exception ex)
@@ -99,6 +107,51 @@ namespace StajProje2
             AdminForm form = new AdminForm();
             form.Show();
             this.Close();
+        }
+
+        private void boyCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (boyCheckBox.Checked == true)
+            {
+                boySlider.Visible = true;
+            }
+            if (boyCheckBox.Checked == false)
+            {
+                boySlider.Visible = false;
+            }
+        }
+
+        private void speeddownCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (speeddownCheckBox.Checked == true)
+            {
+                speedupCheckBox.Checked = false;
+                speeddownSlider.Visible = true;
+                speedupSlider.Visible = false;
+            }
+            if (speeddownCheckBox.Checked == false)
+            {
+                speedupCheckBox.Checked = true;
+                speeddownSlider.Visible = false;
+                speedupSlider.Visible = true;
+            }
+
+        }
+
+        private void speedupCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (speedupCheckBox.Checked == true)
+            {
+                speeddownCheckBox.Checked = false;
+                speeddownSlider.Visible = false;
+                speedupSlider.Visible = true;
+            }
+            if (speedupCheckBox.Checked == false)
+            {
+                speeddownCheckBox.Checked = true;
+                speeddownSlider.Visible = true;
+                speedupSlider.Visible = false;
+            }
         }
     }
 }

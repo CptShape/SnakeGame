@@ -68,6 +68,9 @@ namespace StajProje2
                         Color = ParseColorString(kesme[4]),
                         Description = kesme[5],
                         spawned = false,
+                        expand = int.Parse(kesme[6]),
+                        speeddown = int.Parse(kesme[7]),
+                        speedup = int.Parse(kesme[8]),
                     };
                     consumables.Add(consumable);
 
@@ -337,13 +340,22 @@ namespace StajProje2
 
             foreach (var consumable in consumableList)
             {
+                if ((consTimer - consumable.Lifetime) % consumable.SpawnRate == 0)
+                {
+                    Panel panelB = gamePanel.Controls.OfType<Panel>().FirstOrDefault(p => p.Name == consumable.Name);
+
+                    if (panelB != null && panelB.Parent != null)
+                    {
+                        panelB.Parent.Controls.Remove(panelB);
+                        panelB.Dispose();
+                    }
+                }
+
                 if (consTimer % consumable.SpawnRate == 0)
                 {
                     Spawn_Consumable(consumable);
                 }
             }
-
-
         }
 
         void isConsumed()
@@ -366,7 +378,48 @@ namespace StajProje2
                     var consType = consumableList.First(p => p.Name == consumablePanel.Name);
                     score += (int)consType.Point;
                     scoreValueLabel.Text = score.ToString();
+
+                    for (int i = 0; i < consType.expand; i++)
+                    {
+                        Unit_Addition();
+                    }
+
+                    if(consType.speedup > 0)
+                    {
+                        timer.Interval = timer.Interval / consType.speedup;
+                        Timer newTimer = new Timer();
+                        newTimer.Interval = 10000; // 10 saniye
+                        newTimer.Start();
+                        newTimer.Tag = Tuple.Create(0, consType.speedup);
+                        newTimer.Tick += new EventHandler(speedTick);
+                    }
+                    if (consType.speeddown > 0)
+                    {
+                        timer.Interval = timer.Interval * consType.speeddown;
+                        Timer newTimer = new Timer();
+                        newTimer.Interval = 10000; // 10 saniye
+                        newTimer.Start();
+                        newTimer.Tag = Tuple.Create(1, consType.speeddown);
+                        newTimer.Tick += new EventHandler(speedTick);
+                    }
                 }
+            }
+        }
+
+        private void speedTick(object sender, EventArgs e)
+        {
+            if (sender is Timer thistimer)
+            {
+                if (thistimer.Tag is Tuple<int, int> tuple)
+                {
+                    int sayi1 = tuple.Item1;
+                    int sayi2 = tuple.Item2;
+                    if (sayi1 == 0) timer.Interval = timer.Interval * sayi2;
+                    if (sayi1 == 1) timer.Interval = timer.Interval / sayi2;
+                }
+                
+                thistimer.Stop();
+                thistimer.Dispose();
             }
         }
 
