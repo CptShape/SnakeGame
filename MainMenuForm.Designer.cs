@@ -46,6 +46,7 @@
             usernameBox.Name = "usernameBox";
             usernameBox.Size = new System.Drawing.Size(148, 29);
             usernameBox.TabIndex = 0;
+            usernameBox.KeyPress += usernameBox_KeyPress;
             // 
             // descLabel1
             // 
@@ -91,9 +92,9 @@
             levelNameLabel.AutoSize = true;
             levelNameLabel.Location = new System.Drawing.Point(353, 392);
             levelNameLabel.Name = "levelNameLabel";
-            levelNameLabel.Size = new System.Drawing.Size(38, 15);
+            levelNameLabel.Size = new System.Drawing.Size(82, 15);
             levelNameLabel.TabIndex = 5;
-            levelNameLabel.Text = "label1";
+            levelNameLabel.Text = "yourMaxLabel";
             levelNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // selectButton
@@ -131,7 +132,6 @@
             Controls.Add(usernameBox);
             Name = "MainMenuForm";
             Text = "MainMenuForm";
-            Load += MainMenuForm_Load;
             ((System.ComponentModel.ISupportInitialize)levelPicture).EndInit();
             ResumeLayout(false);
             PerformLayout();

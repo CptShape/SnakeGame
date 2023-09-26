@@ -31,62 +31,65 @@ namespace StajProje2
         {
             components = new System.ComponentModel.Container();
             gamePanel = new System.Windows.Forms.Panel();
-            loseLabel = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
+            resultLabel = new System.Windows.Forms.Label();
+            startLabel = new System.Windows.Forms.Label();
             scoreValueLabel = new System.Windows.Forms.Label();
             scoreLabel = new System.Windows.Forms.Label();
             timer = new System.Windows.Forms.Timer(components);
             scoreLimitTextBox = new System.Windows.Forms.TextBox();
             descLabel = new System.Windows.Forms.Label();
-            descLabel2 = new System.Windows.Forms.Label();
-            descLabel3 = new System.Windows.Forms.Label();
+            skorlimitLabel = new System.Windows.Forms.Label();
             usernameLabel = new System.Windows.Forms.Label();
             maxScoreLabel = new System.Windows.Forms.Label();
             consumableTimer = new System.Windows.Forms.Timer(components);
+            yourMaxLabel = new System.Windows.Forms.Label();
+            consumablesLabel = new System.Windows.Forms.Label();
+            scoreTableLabel = new System.Windows.Forms.Label();
+            backLabel = new System.Windows.Forms.Label();
             gamePanel.SuspendLayout();
             SuspendLayout();
             // 
             // gamePanel
             // 
             gamePanel.BackColor = System.Drawing.Color.White;
-            gamePanel.Controls.Add(loseLabel);
+            gamePanel.Controls.Add(resultLabel);
             gamePanel.Location = new System.Drawing.Point(10, 11);
             gamePanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             gamePanel.Name = "gamePanel";
             gamePanel.Size = new System.Drawing.Size(600, 600);
             gamePanel.TabIndex = 0;
             // 
-            // loseLabel
+            // resultLabel
             // 
-            loseLabel.AutoSize = true;
-            loseLabel.Font = new System.Drawing.Font("Segoe UI", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            loseLabel.ForeColor = System.Drawing.Color.White;
-            loseLabel.Location = new System.Drawing.Point(118, 33);
-            loseLabel.Name = "loseLabel";
-            loseLabel.Size = new System.Drawing.Size(339, 72);
-            loseLabel.TabIndex = 4;
-            loseLabel.Text = "KAYBETTİN!";
-            loseLabel.Visible = false;
+            resultLabel.AutoSize = true;
+            resultLabel.Font = new System.Drawing.Font("Segoe UI", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            resultLabel.ForeColor = System.Drawing.Color.White;
+            resultLabel.Location = new System.Drawing.Point(118, 33);
+            resultLabel.Name = "resultLabel";
+            resultLabel.Size = new System.Drawing.Size(339, 72);
+            resultLabel.TabIndex = 4;
+            resultLabel.Text = "KAYBETTİN!";
+            resultLabel.Visible = false;
             // 
-            // label3
+            // startLabel
             // 
-            label3.AutoSize = true;
-            label3.BackColor = System.Drawing.Color.White;
-            label3.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            label3.Location = new System.Drawing.Point(636, 565);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(118, 46);
-            label3.TabIndex = 3;
-            label3.Text = "BAŞLA";
-            label3.Click += Start_Click;
+            startLabel.AutoSize = true;
+            startLabel.BackColor = System.Drawing.Color.White;
+            startLabel.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            startLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            startLabel.Location = new System.Drawing.Point(636, 565);
+            startLabel.Name = "startLabel";
+            startLabel.Size = new System.Drawing.Size(118, 46);
+            startLabel.TabIndex = 3;
+            startLabel.Text = "BAŞLA";
+            startLabel.Click += Start_Click;
             // 
             // scoreValueLabel
             // 
             scoreValueLabel.AutoSize = true;
             scoreValueLabel.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             scoreValueLabel.ForeColor = System.Drawing.SystemColors.Desktop;
-            scoreValueLabel.Location = new System.Drawing.Point(750, 106);
+            scoreValueLabel.Location = new System.Drawing.Point(740, 106);
             scoreValueLabel.Name = "scoreValueLabel";
             scoreValueLabel.Size = new System.Drawing.Size(38, 46);
             scoreValueLabel.TabIndex = 2;
@@ -98,7 +101,7 @@ namespace StajProje2
             scoreLabel.AutoSize = true;
             scoreLabel.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             scoreLabel.ForeColor = System.Drawing.SystemColors.Desktop;
-            scoreLabel.Location = new System.Drawing.Point(636, 106);
+            scoreLabel.Location = new System.Drawing.Point(626, 107);
             scoreLabel.Name = "scoreLabel";
             scoreLabel.Size = new System.Drawing.Size(108, 46);
             scoreLabel.TabIndex = 1;
@@ -128,27 +131,16 @@ namespace StajProje2
             descLabel.TabIndex = 5;
             descLabel.Text = "(Sonsuz için 0 giriniz)";
             // 
-            // descLabel2
+            // skorlimitLabel
             // 
-            descLabel2.AutoSize = true;
-            descLabel2.Font = new System.Drawing.Font("Segoe UI", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            descLabel2.ForeColor = System.Drawing.SystemColors.Desktop;
-            descLabel2.Location = new System.Drawing.Point(774, 509);
-            descLabel2.Name = "descLabel2";
-            descLabel2.Size = new System.Drawing.Size(110, 31);
-            descLabel2.TabIndex = 6;
-            descLabel2.Text = "Skor limit";
-            // 
-            // descLabel3
-            // 
-            descLabel3.AutoSize = true;
-            descLabel3.Font = new System.Drawing.Font("Segoe UI", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            descLabel3.ForeColor = System.Drawing.SystemColors.Desktop;
-            descLabel3.Location = new System.Drawing.Point(636, 172);
-            descLabel3.Name = "descLabel3";
-            descLabel3.Size = new System.Drawing.Size(188, 31);
-            descLabel3.TabIndex = 7;
-            descLabel3.Text = "(Elma = 50 puan)";
+            skorlimitLabel.AutoSize = true;
+            skorlimitLabel.Font = new System.Drawing.Font("Segoe UI", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            skorlimitLabel.ForeColor = System.Drawing.SystemColors.Desktop;
+            skorlimitLabel.Location = new System.Drawing.Point(774, 509);
+            skorlimitLabel.Name = "skorlimitLabel";
+            skorlimitLabel.Size = new System.Drawing.Size(110, 31);
+            skorlimitLabel.TabIndex = 6;
+            skorlimitLabel.Text = "Skor limit";
             // 
             // usernameLabel
             // 
@@ -156,9 +148,9 @@ namespace StajProje2
             usernameLabel.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             usernameLabel.Location = new System.Drawing.Point(626, 11);
             usernameLabel.Name = "usernameLabel";
-            usernameLabel.Size = new System.Drawing.Size(65, 28);
+            usernameLabel.Size = new System.Drawing.Size(99, 28);
             usernameLabel.TabIndex = 8;
-            usernameLabel.Text = "label1";
+            usernameLabel.Text = "Username";
             // 
             // maxScoreLabel
             // 
@@ -166,14 +158,63 @@ namespace StajProje2
             maxScoreLabel.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             maxScoreLabel.Location = new System.Drawing.Point(626, 44);
             maxScoreLabel.Name = "maxScoreLabel";
-            maxScoreLabel.Size = new System.Drawing.Size(65, 28);
+            maxScoreLabel.Size = new System.Drawing.Size(23, 28);
             maxScoreLabel.TabIndex = 9;
-            maxScoreLabel.Text = "label1";
+            maxScoreLabel.Text = "0";
             // 
             // consumableTimer
             // 
             consumableTimer.Interval = 1000;
             consumableTimer.Tick += Consumable_Tick;
+            // 
+            // yourMaxLabel
+            // 
+            yourMaxLabel.AutoSize = true;
+            yourMaxLabel.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            yourMaxLabel.Location = new System.Drawing.Point(626, 78);
+            yourMaxLabel.Name = "yourMaxLabel";
+            yourMaxLabel.Size = new System.Drawing.Size(23, 28);
+            yourMaxLabel.TabIndex = 10;
+            yourMaxLabel.Text = "0";
+            // 
+            // consumablesLabel
+            // 
+            consumablesLabel.AutoSize = true;
+            consumablesLabel.BackColor = System.Drawing.Color.White;
+            consumablesLabel.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            consumablesLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            consumablesLabel.Location = new System.Drawing.Point(653, 302);
+            consumablesLabel.Name = "consumablesLabel";
+            consumablesLabel.Size = new System.Drawing.Size(70, 28);
+            consumablesLabel.TabIndex = 14;
+            consumablesLabel.Text = "Yemler";
+            consumablesLabel.Click += consumablesButton_Click;
+            // 
+            // scoreTableLabel
+            // 
+            scoreTableLabel.AutoSize = true;
+            scoreTableLabel.BackColor = System.Drawing.Color.White;
+            scoreTableLabel.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            scoreTableLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            scoreTableLabel.Location = new System.Drawing.Point(761, 302);
+            scoreTableLabel.Name = "scoreTableLabel";
+            scoreTableLabel.Size = new System.Drawing.Size(123, 28);
+            scoreTableLabel.TabIndex = 15;
+            scoreTableLabel.Text = "Skor Tablosu";
+            scoreTableLabel.Click += scoreTableButton_Click;
+            // 
+            // backLabel
+            // 
+            backLabel.AutoSize = true;
+            backLabel.BackColor = System.Drawing.Color.White;
+            backLabel.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            backLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            backLabel.Location = new System.Drawing.Point(795, 565);
+            backLabel.Name = "backLabel";
+            backLabel.Size = new System.Drawing.Size(89, 46);
+            backLabel.TabIndex = 16;
+            backLabel.Text = "GERI";
+            backLabel.Click += backButton_Click;
             // 
             // Form1
             // 
@@ -181,15 +222,18 @@ namespace StajProje2
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.LightGray;
             ClientSize = new System.Drawing.Size(906, 652);
+            Controls.Add(backLabel);
+            Controls.Add(scoreTableLabel);
+            Controls.Add(consumablesLabel);
+            Controls.Add(yourMaxLabel);
             Controls.Add(maxScoreLabel);
             Controls.Add(usernameLabel);
-            Controls.Add(descLabel3);
-            Controls.Add(descLabel2);
+            Controls.Add(skorlimitLabel);
             Controls.Add(descLabel);
             Controls.Add(scoreLimitTextBox);
             Controls.Add(gamePanel);
             Controls.Add(scoreValueLabel);
-            Controls.Add(label3);
+            Controls.Add(startLabel);
             Controls.Add(scoreLabel);
             ForeColor = System.Drawing.SystemColors.HighlightText;
             Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -207,15 +251,18 @@ namespace StajProje2
         private System.Windows.Forms.Panel gamePanel;
         private System.Windows.Forms.Label scoreLabel;
         private System.Windows.Forms.Label scoreValueLabel;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label loseLabel;
+        private System.Windows.Forms.Label startLabel;
+        private System.Windows.Forms.Label resultLabel;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.TextBox scoreLimitTextBox;
         private System.Windows.Forms.Label descLabel;
-        private System.Windows.Forms.Label descLabel2;
-        private System.Windows.Forms.Label descLabel3;
+        private System.Windows.Forms.Label skorlimitLabel;
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.Label maxScoreLabel;
         private System.Windows.Forms.Timer consumableTimer;
+        private System.Windows.Forms.Label yourMaxLabel;
+        private System.Windows.Forms.Label consumablesLabel;
+        private System.Windows.Forms.Label scoreTableLabel;
+        private System.Windows.Forms.Label backLabel;
     }
 }

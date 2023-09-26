@@ -1,9 +1,11 @@
-﻿using System;
+﻿using StajProje2.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
@@ -13,85 +15,119 @@ namespace StajProje2
 {
     public partial class MapCreationForm : Form
     {
-        private const int gridSize = 20;  // Karelerin kenar uzunluğu ve grid boyutu
+        static string mainPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        static string mapPath = Path.Combine(mainPath, "Maps");
+        static string mapTxtPath = Path.Combine(mainPath, $"Maps\\maps.txt");
 
-        static string mainpath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        static string mapPath = Path.Combine(mainpath, "Maps");
-        static string mapTxtPath = Path.Combine(mainpath, $"Maps\\maps.txt");
+        private const int gridSize = 20;
 
-        static List<string> kareler = new List<string>();
+        static List<string> squares = new List<string>();
+
+
+
 
         public MapCreationForm()
         {
             InitializeComponent();
-            pictureBox1.AllowDrop = true;
+            pictureBox.AllowDrop = true;
         }
 
 
-        private void panel1_MouseClick(object sender, MouseEventArgs e)
+
+
+        // Map verilerini oku
+        private List<MapClass> ReadData_Map()
+        {
+            List<MapClass> maps = new List<MapClass> { };
+
+            using (StreamReader sr = new StreamReader(mapTxtPath))
+            {
+                string line;
+                List<string> lines = new List<string>();
+
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] cut = line.Split(';');
+
+                    MapClass map = new MapClass()
+                    {
+                       Name = cut[0],
+                    };
+                    maps.Add(map);
+
+                    lines.Add(line);
+                }
+                return maps;
+            }
+        }
+
+
+
+
+        private void mapPanel_MouseClick(object sender, MouseEventArgs e)
         {
             // Mouse konumunu al
-            Point mouseKonumuPanel = e.Location;
+            Point mouseLocationPanel = e.Location;
 
             // Kare için yeni konumu hesapla
-            int kareX = (mouseKonumuPanel.X / gridSize) * gridSize;
-            int kareY = (mouseKonumuPanel.Y / gridSize) * gridSize;
+            int squareX = (mouseLocationPanel.X / gridSize) * gridSize;
+            int squareY = (mouseLocationPanel.Y / gridSize) * gridSize;
 
             // Kare oluştur ve özelliklerini ayarla
-            Panel kare = new Panel();
-            kare.Size = new Size(gridSize, gridSize);
-            kare.BackColor = Color.Black; // Kare rengi (örneğin, siyah)
-            kare.Location = new Point(kareX, kareY);
+            Panel square = new Panel();
+            square.Size = new Size(gridSize, gridSize);
+            square.BackColor = Color.Black;
+            square.Location = new Point(squareX, squareY);
 
             // Kareyi panele ekle
-            panel1.Controls.Add(kare);
-            kare.MouseClick += Kare_MouseClick;
+            mapPanel.Controls.Add(square);
+            square.MouseClick += square_MouseClick;
 
-            // Kareyi kare listesine ekle
-            kareler.Add(kareX + "x" + kareY);
+            // Kareyi square listesine ekle
+            squares.Add(squareX + "x" + squareY);
         }
 
-        private void Kare_MouseClick(object sender, MouseEventArgs e)
+        // Sağ tıklandığında square panelini sil
+        private void square_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
-                // Sağ tıklandığında kare panelini sil
-                Panel karePanel = sender as Panel;
-                Point panelLocation = karePanel.Location;
+                Panel squarePanel = sender as Panel;
+                Point panelLocation = squarePanel.Location;
 
-                panel1.Controls.Remove(karePanel);
-                karePanel.Dispose();
+                mapPanel.Controls.Remove(squarePanel);
+                squarePanel.Dispose();
 
-                while (kareler.Contains(panelLocation.X.ToString() + "x" + panelLocation.Y.ToString()))
+                while (squares.Contains(panelLocation.X.ToString() + "x" + panelLocation.Y.ToString()))
                 {
-                    kareler.Remove(panelLocation.X.ToString() + "x" + panelLocation.Y.ToString());
+                    squares.Remove(panelLocation.X.ToString() + "x" + panelLocation.Y.ToString());
                 }
             }
         }
 
-        private void pictureBox1_DragEnter(object sender, DragEventArgs e)
+
+
+
+        private void pictureBox_DragEnter(object sender, DragEventArgs e)
         {
-            // Sürüklenen öğe bir resim mi kontrol et
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
                 e.Effect = DragDropEffects.Copy;
             else
                 e.Effect = DragDropEffects.None;
         }
 
-        private void pictureBox1_DragDrop(object sender, DragEventArgs e)
+        private void pictureBox_DragDrop(object sender, DragEventArgs e)
         {
-            // Sürüklenen resmi PictureBox'e yükle
-            string[] dosyaYollari = (string[])e.Data.GetData(DataFormats.FileDrop);
+            string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop);
 
-            if (dosyaYollari != null && dosyaYollari.Length > 0)
+            if (filePaths != null && filePaths.Length > 0)
             {
-                string dosyaAdi = Path.GetFileName(dosyaYollari[0]);
-                Image originalImage = new Bitmap(dosyaYollari[0]);
-                pictureBox1.Image = ScaleImage(originalImage, pictureBox1.Size);
+                string fileName = Path.GetFileName(filePaths[0]);
+                Image originalImage = new Bitmap(filePaths[0]);
+                pictureBox.Image = ScaleImage(originalImage, pictureBox.Size);
             }
         }
 
-        // scale
         private Image ScaleImage(Image image, Size size)
         {
             Bitmap scaledImage = new Bitmap(size.Width, size.Height);
@@ -103,27 +139,39 @@ namespace StajProje2
             return scaledImage;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+
+
+        private void createButton_Click(object sender, EventArgs e)
         {
-            if (pictureBox1.Image != null) // image kısmında bir şey varsa
+            var maps = ReadData_Map();
+            var result = maps.Where(p => p.Name == nameBox.Text).ToList();
+
+            if(result.Count() != 0)
             {
-                string dosyaAdi = textBox1.Text + ".png"; // dosyaAdi = asd.png
-                string hedefYol = Path.Combine(mapPath, dosyaAdi); // hedef = .../Maps/asd.png
+                MessageBox.Show("Bu isimde bir map mevcut.");
+                return;
+            }
+
+            if (pictureBox.Image != null) // image kısmında bir şey varsa
+            {
+                string fileName = nameBox.Text + ".png";
+                string targetPath = Path.Combine(mapPath, fileName);
 
                 try
                 {
-                    pictureBox1.Image.Save(hedefYol); // hedefe girilen resmi kaydet
+                    pictureBox.Image.Save(targetPath); // hedefe girilen resmi kaydet
 
-                    string addKare = string.Empty;
-                    foreach (var kare in kareler)
+                    string addSquare = string.Empty;
+                    foreach (var square in squares)
                     {
-                        addKare += kare + ",";
+                        addSquare += square + ",";
                     }
-                    if(addKare.Length != 0) addKare = addKare.Remove(addKare.Length - 1);
+                    if (addSquare.Length != 0) addSquare = addSquare.Remove(addSquare.Length - 1);
 
                     try
                     {
-                        File.AppendAllText(mapTxtPath, Environment.NewLine + textBox1.Text + ";" + dosyaAdi + ";" + addKare);
+                        File.AppendAllText(mapTxtPath, Environment.NewLine + nameBox.Text + ";" + fileName + ";" + addSquare);
                     }
                     catch (Exception ex)
                     {
@@ -135,22 +183,22 @@ namespace StajProje2
                     MessageBox.Show("Resim kaydedilirken bir hata oluştu: " + ex.Message);
                 }
 
-                pictureBox1.Image = null;
+                pictureBox.Image = null;
             }
             else
             {
                 saveScreenshot();
 
-                string addKare = string.Empty;
-                foreach (var kare in kareler)
+                string addSquare = string.Empty;
+                foreach (var square in squares)
                 {
-                    addKare += kare + ",";
+                    addSquare += square + ",";
                 }
-                addKare = addKare.Remove(addKare.Length - 1);
+                addSquare = addSquare.Remove(addSquare.Length - 1);
 
                 try
                 {
-                    File.AppendAllText(mapTxtPath, Environment.NewLine + textBox1.Text + ";" + textBox1.Text + ".png" + ";" + addKare);
+                    File.AppendAllText(mapTxtPath, Environment.NewLine + nameBox.Text + ";" + nameBox.Text + ".png" + ";" + addSquare);
                 }
                 catch (Exception ex)
                 {
@@ -158,57 +206,57 @@ namespace StajProje2
                 }
             }
 
-            panel1.Controls.Clear();
-            kareler.Clear();
+            mapPanel.Controls.Clear();
+            squares.Clear();
         }
 
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        private void clearButton_Click(object sender, EventArgs e)
         {
-            // Space ve , tuşuna izin verme
-            if (e.KeyChar == ' ' || e.KeyChar == ',' || e.KeyChar == ';')
-            {
-                e.Handled = true;
-                return;
-            }
-
-            // Karakter sınırını kontrol et
-            TextBox textBox = sender as TextBox;
-            if (textBox.Text.Length >= 15 && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            pictureBox.Image = null;
         }
 
-        private void saveScreenshot()
-        {
-            // Get the location and size of the panel to capture
-            Point panelLocation = panel1.PointToScreen(Point.Empty);
-            Size panelSize = panel1.Size;
-
-            // Create a bitmap to store the screenshot
-            Bitmap screenshot = new Bitmap(panelSize.Width, panelSize.Height);
-
-            // Capture the screenshot of the panel
-            using (Graphics g = Graphics.FromImage(screenshot))
-            {
-                g.CopyFromScreen(panelLocation, Point.Empty, panelSize);
-            }
-
-            // Save the screenshot as an image file
-            string filePath = Path.Combine(mapPath, textBox1.Text + ".png");
-            screenshot.Save(filePath, System.Drawing.Imaging.ImageFormat.Png);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void backButton_Click(object sender, EventArgs e)
         {
             AdminForm form = new AdminForm();
             form.Show();
             this.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+
+
+
+        private void saveScreenshot()
         {
-            pictureBox1.Image = null;
+            Point panelLocation = mapPanel.PointToScreen(Point.Empty);
+            Size panelSize = mapPanel.Size;
+
+            Bitmap screenshot = new Bitmap(panelSize.Width, panelSize.Height);
+
+            using (Graphics g = Graphics.FromImage(screenshot))
+            {
+                g.CopyFromScreen(panelLocation, Point.Empty, panelSize);
+            }
+
+            string filePath = Path.Combine(mapPath, nameBox.Text + ".png");
+            screenshot.Save(filePath, System.Drawing.Imaging.ImageFormat.Png);
+        }
+
+
+
+
+        private void nameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ' ' || e.KeyChar == ',' || e.KeyChar == ';')
+            {
+                e.Handled = true;
+                return;
+            }
+
+            TextBox textBox = sender as TextBox;
+            if (textBox.Text.Length >= 15 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

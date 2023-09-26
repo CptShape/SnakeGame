@@ -1,4 +1,1 @@
-Armut;8;10;10;Color [A=255, R=0, G=255, B=0];Boyun uzamaz ama az puan verir;0;0;0
-MaviYem;8;30;150;Color [A=255, R=0, G=0, B=255];Boyun 2 uzar ama 3 kat puan verir;5;0;0
-Portakal;10;10;20;Color [A=255, R=255, G=126, B=0];Portakal;1;4;0
-ASD;10;10;20;Color [A=100, R=255, G=100, B=0];ASD;1;2;4
+Armut;5;15;25;Color [A=255, R=0, G=255, B=0];Boyun uzamaz ama az puan verir;0;0;0

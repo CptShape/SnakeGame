@@ -29,38 +29,38 @@
         private void InitializeComponent()
         {
             nameBox = new System.Windows.Forms.TextBox();
-            label1 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
-            richTextBox1 = new System.Windows.Forms.RichTextBox();
-            trackBar1 = new System.Windows.Forms.TrackBar();
-            trackBar2 = new System.Windows.Forms.TrackBar();
-            trackBar3 = new System.Windows.Forms.TrackBar();
-            label3 = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
-            label5 = new System.Windows.Forms.Label();
-            panel1 = new System.Windows.Forms.Panel();
-            trackBar4 = new System.Windows.Forms.TrackBar();
-            label6 = new System.Windows.Forms.Label();
+            nameLabel = new System.Windows.Forms.Label();
+            descLabel = new System.Windows.Forms.Label();
+            descRichTextBox = new System.Windows.Forms.RichTextBox();
+            redTrackBar = new System.Windows.Forms.TrackBar();
+            greenTrackBar = new System.Windows.Forms.TrackBar();
+            blueTrackBar = new System.Windows.Forms.TrackBar();
+            redLabel = new System.Windows.Forms.Label();
+            greenLabel = new System.Windows.Forms.Label();
+            blueLabel = new System.Windows.Forms.Label();
+            argbPanel = new System.Windows.Forms.Panel();
+            alphaTrackBar = new System.Windows.Forms.TrackBar();
+            alphaLabel = new System.Windows.Forms.Label();
             lifetimeBox = new System.Windows.Forms.TextBox();
-            label7 = new System.Windows.Forms.Label();
-            label8 = new System.Windows.Forms.Label();
+            lifetimeLabel = new System.Windows.Forms.Label();
+            rateLabel = new System.Windows.Forms.Label();
             periodBox = new System.Windows.Forms.TextBox();
             pointBox = new System.Windows.Forms.TextBox();
-            label9 = new System.Windows.Forms.Label();
-            button1 = new System.Windows.Forms.Button();
-            button2 = new System.Windows.Forms.Button();
-            label10 = new System.Windows.Forms.Label();
-            boyCheckBox = new System.Windows.Forms.CheckBox();
-            boySlider = new System.Windows.Forms.TrackBar();
+            pointLabel = new System.Windows.Forms.Label();
+            createButton = new System.Windows.Forms.Button();
+            backButton = new System.Windows.Forms.Button();
+            ekstraLabel = new System.Windows.Forms.Label();
+            lengthCheckBox = new System.Windows.Forms.CheckBox();
+            lengthSlider = new System.Windows.Forms.TrackBar();
             speedupSlider = new System.Windows.Forms.TrackBar();
             speedupCheckBox = new System.Windows.Forms.CheckBox();
             speeddownSlider = new System.Windows.Forms.TrackBar();
             speeddownCheckBox = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)trackBar2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)trackBar3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)trackBar4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)boySlider).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)redTrackBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)greenTrackBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)blueTrackBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)alphaTrackBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)lengthSlider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)speedupSlider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)speeddownSlider).BeginInit();
             SuspendLayout();
@@ -71,114 +71,115 @@
             nameBox.Name = "nameBox";
             nameBox.Size = new System.Drawing.Size(127, 23);
             nameBox.TabIndex = 0;
+            nameBox.KeyPress += nameBox_KeyPress;
             // 
-            // label1
+            // nameLabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(27, 18);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(29, 15);
-            label1.TabIndex = 1;
-            label1.Text = "Isim";
+            nameLabel.AutoSize = true;
+            nameLabel.Location = new System.Drawing.Point(27, 18);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new System.Drawing.Size(29, 15);
+            nameLabel.TabIndex = 1;
+            nameLabel.Text = "Isim";
             // 
-            // label2
+            // descLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(27, 92);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(67, 15);
-            label2.TabIndex = 2;
-            label2.Text = "Description";
+            descLabel.AutoSize = true;
+            descLabel.Location = new System.Drawing.Point(27, 92);
+            descLabel.Name = "descLabel";
+            descLabel.Size = new System.Drawing.Size(56, 15);
+            descLabel.TabIndex = 2;
+            descLabel.Text = "Açıklama";
             // 
-            // richTextBox1
+            // descRichTextBox
             // 
-            richTextBox1.Location = new System.Drawing.Point(27, 110);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new System.Drawing.Size(330, 81);
-            richTextBox1.TabIndex = 3;
-            richTextBox1.Text = "";
+            descRichTextBox.Location = new System.Drawing.Point(27, 110);
+            descRichTextBox.Name = "descRichTextBox";
+            descRichTextBox.Size = new System.Drawing.Size(330, 81);
+            descRichTextBox.TabIndex = 3;
+            descRichTextBox.Text = "";
             // 
-            // trackBar1
+            // redTrackBar
             // 
-            trackBar1.Location = new System.Drawing.Point(27, 235);
-            trackBar1.Maximum = 255;
-            trackBar1.Name = "trackBar1";
-            trackBar1.Size = new System.Drawing.Size(175, 45);
-            trackBar1.TabIndex = 4;
-            trackBar1.ValueChanged += trackBar1_ValueChanged;
+            redTrackBar.Location = new System.Drawing.Point(27, 235);
+            redTrackBar.Maximum = 255;
+            redTrackBar.Name = "redTrackBar";
+            redTrackBar.Size = new System.Drawing.Size(175, 45);
+            redTrackBar.TabIndex = 4;
+            redTrackBar.ValueChanged += trackBar1_ValueChanged;
             // 
-            // trackBar2
+            // greenTrackBar
             // 
-            trackBar2.Location = new System.Drawing.Point(27, 273);
-            trackBar2.Maximum = 255;
-            trackBar2.Name = "trackBar2";
-            trackBar2.Size = new System.Drawing.Size(175, 45);
-            trackBar2.TabIndex = 5;
-            trackBar2.ValueChanged += trackBar1_ValueChanged;
+            greenTrackBar.Location = new System.Drawing.Point(27, 273);
+            greenTrackBar.Maximum = 255;
+            greenTrackBar.Name = "greenTrackBar";
+            greenTrackBar.Size = new System.Drawing.Size(175, 45);
+            greenTrackBar.TabIndex = 5;
+            greenTrackBar.ValueChanged += trackBar1_ValueChanged;
             // 
-            // trackBar3
+            // blueTrackBar
             // 
-            trackBar3.Location = new System.Drawing.Point(27, 309);
-            trackBar3.Maximum = 255;
-            trackBar3.Name = "trackBar3";
-            trackBar3.Size = new System.Drawing.Size(175, 45);
-            trackBar3.TabIndex = 6;
-            trackBar3.ValueChanged += trackBar1_ValueChanged;
+            blueTrackBar.Location = new System.Drawing.Point(27, 309);
+            blueTrackBar.Maximum = 255;
+            blueTrackBar.Name = "blueTrackBar";
+            blueTrackBar.Size = new System.Drawing.Size(175, 45);
+            blueTrackBar.TabIndex = 6;
+            blueTrackBar.ValueChanged += trackBar1_ValueChanged;
             // 
-            // label3
+            // redLabel
             // 
-            label3.AutoSize = true;
-            label3.ForeColor = System.Drawing.Color.Red;
-            label3.Location = new System.Drawing.Point(208, 235);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(13, 15);
-            label3.TabIndex = 7;
-            label3.Text = "0";
+            redLabel.AutoSize = true;
+            redLabel.ForeColor = System.Drawing.Color.Red;
+            redLabel.Location = new System.Drawing.Point(208, 235);
+            redLabel.Name = "redLabel";
+            redLabel.Size = new System.Drawing.Size(13, 15);
+            redLabel.TabIndex = 7;
+            redLabel.Text = "0";
             // 
-            // label4
+            // greenLabel
             // 
-            label4.AutoSize = true;
-            label4.ForeColor = System.Drawing.Color.Green;
-            label4.Location = new System.Drawing.Point(208, 273);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(13, 15);
-            label4.TabIndex = 8;
-            label4.Text = "0";
+            greenLabel.AutoSize = true;
+            greenLabel.ForeColor = System.Drawing.Color.Green;
+            greenLabel.Location = new System.Drawing.Point(208, 273);
+            greenLabel.Name = "greenLabel";
+            greenLabel.Size = new System.Drawing.Size(13, 15);
+            greenLabel.TabIndex = 8;
+            greenLabel.Text = "0";
             // 
-            // label5
+            // blueLabel
             // 
-            label5.AutoSize = true;
-            label5.ForeColor = System.Drawing.Color.SteelBlue;
-            label5.Location = new System.Drawing.Point(208, 309);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(13, 15);
-            label5.TabIndex = 9;
-            label5.Text = "0";
+            blueLabel.AutoSize = true;
+            blueLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            blueLabel.Location = new System.Drawing.Point(208, 309);
+            blueLabel.Name = "blueLabel";
+            blueLabel.Size = new System.Drawing.Size(13, 15);
+            blueLabel.TabIndex = 9;
+            blueLabel.Text = "0";
             // 
-            // panel1
+            // argbPanel
             // 
-            panel1.Location = new System.Drawing.Point(254, 235);
-            panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(103, 103);
-            panel1.TabIndex = 10;
+            argbPanel.Location = new System.Drawing.Point(254, 235);
+            argbPanel.Name = "argbPanel";
+            argbPanel.Size = new System.Drawing.Size(103, 103);
+            argbPanel.TabIndex = 10;
             // 
-            // trackBar4
+            // alphaTrackBar
             // 
-            trackBar4.Location = new System.Drawing.Point(27, 344);
-            trackBar4.Maximum = 255;
-            trackBar4.Name = "trackBar4";
-            trackBar4.Size = new System.Drawing.Size(175, 45);
-            trackBar4.TabIndex = 11;
-            trackBar4.ValueChanged += trackBar1_ValueChanged;
+            alphaTrackBar.Location = new System.Drawing.Point(27, 344);
+            alphaTrackBar.Maximum = 255;
+            alphaTrackBar.Name = "alphaTrackBar";
+            alphaTrackBar.Size = new System.Drawing.Size(175, 45);
+            alphaTrackBar.TabIndex = 11;
+            alphaTrackBar.ValueChanged += trackBar1_ValueChanged;
             // 
-            // label6
+            // alphaLabel
             // 
-            label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(208, 344);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(25, 15);
-            label6.TabIndex = 12;
-            label6.Text = "255";
+            alphaLabel.AutoSize = true;
+            alphaLabel.Location = new System.Drawing.Point(208, 344);
+            alphaLabel.Name = "alphaLabel";
+            alphaLabel.Size = new System.Drawing.Size(25, 15);
+            alphaLabel.TabIndex = 12;
+            alphaLabel.Text = "255";
             // 
             // lifetimeBox
             // 
@@ -186,24 +187,25 @@
             lifetimeBox.Name = "lifetimeBox";
             lifetimeBox.Size = new System.Drawing.Size(63, 23);
             lifetimeBox.TabIndex = 13;
+            lifetimeBox.KeyPress += KeyPress_OnlyDigits;
             // 
-            // label7
+            // lifetimeLabel
             // 
-            label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(27, 64);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(72, 15);
-            label7.TabIndex = 14;
-            label7.Text = "Hayat Süresi";
+            lifetimeLabel.AutoSize = true;
+            lifetimeLabel.Location = new System.Drawing.Point(27, 64);
+            lifetimeLabel.Name = "lifetimeLabel";
+            lifetimeLabel.Size = new System.Drawing.Size(72, 15);
+            lifetimeLabel.TabIndex = 14;
+            lifetimeLabel.Text = "Hayat Süresi";
             // 
-            // label8
+            // rateLabel
             // 
-            label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(241, 69);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(47, 15);
-            label8.TabIndex = 15;
-            label8.Text = "Periyod";
+            rateLabel.AutoSize = true;
+            rateLabel.Location = new System.Drawing.Point(241, 69);
+            rateLabel.Name = "rateLabel";
+            rateLabel.Size = new System.Drawing.Size(47, 15);
+            rateLabel.TabIndex = 15;
+            rateLabel.Text = "Periyod";
             // 
             // periodBox
             // 
@@ -211,6 +213,7 @@
             periodBox.Name = "periodBox";
             periodBox.Size = new System.Drawing.Size(63, 23);
             periodBox.TabIndex = 16;
+            periodBox.KeyPress += KeyPress_OnlyDigits;
             // 
             // pointBox
             // 
@@ -218,64 +221,65 @@
             pointBox.Name = "pointBox";
             pointBox.Size = new System.Drawing.Size(63, 23);
             pointBox.TabIndex = 18;
+            pointBox.KeyPress += KeyPress_OnlyDigits;
             // 
-            // label9
+            // pointLabel
             // 
-            label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(254, 21);
-            label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(34, 15);
-            label9.TabIndex = 17;
-            label9.Text = "Puan";
+            pointLabel.AutoSize = true;
+            pointLabel.Location = new System.Drawing.Point(254, 21);
+            pointLabel.Name = "pointLabel";
+            pointLabel.Size = new System.Drawing.Size(34, 15);
+            pointLabel.TabIndex = 17;
+            pointLabel.Text = "Puan";
             // 
-            // button1
+            // createButton
             // 
-            button1.Location = new System.Drawing.Point(266, 418);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(75, 23);
-            button1.TabIndex = 19;
-            button1.Text = "Oluştur";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            createButton.Location = new System.Drawing.Point(266, 418);
+            createButton.Name = "createButton";
+            createButton.Size = new System.Drawing.Size(75, 23);
+            createButton.TabIndex = 19;
+            createButton.Text = "Oluştur";
+            createButton.UseVisualStyleBackColor = true;
+            createButton.Click += createButton_Click;
             // 
-            // button2
+            // backButton
             // 
-            button2.Location = new System.Drawing.Point(55, 418);
-            button2.Name = "button2";
-            button2.Size = new System.Drawing.Size(75, 23);
-            button2.TabIndex = 20;
-            button2.Text = "Geri";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            backButton.Location = new System.Drawing.Point(55, 418);
+            backButton.Name = "backButton";
+            backButton.Size = new System.Drawing.Size(75, 23);
+            backButton.TabIndex = 20;
+            backButton.Text = "Geri";
+            backButton.UseVisualStyleBackColor = true;
+            backButton.Click += backButton_Click;
             // 
-            // label10
+            // ekstraLabel
             // 
-            label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(10, 480);
-            label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(89, 15);
-            label10.TabIndex = 21;
-            label10.Text = "Ekstra Özellikler";
+            ekstraLabel.AutoSize = true;
+            ekstraLabel.Location = new System.Drawing.Point(10, 480);
+            ekstraLabel.Name = "ekstraLabel";
+            ekstraLabel.Size = new System.Drawing.Size(89, 15);
+            ekstraLabel.TabIndex = 21;
+            ekstraLabel.Text = "Ekstra Özellikler";
             // 
-            // boyCheckBox
+            // lengthCheckBox
             // 
-            boyCheckBox.AutoSize = true;
-            boyCheckBox.Location = new System.Drawing.Point(10, 520);
-            boyCheckBox.Name = "boyCheckBox";
-            boyCheckBox.Size = new System.Drawing.Size(85, 19);
-            boyCheckBox.TabIndex = 22;
-            boyCheckBox.Text = "Boy Uzama";
-            boyCheckBox.UseVisualStyleBackColor = true;
-            boyCheckBox.CheckedChanged += boyCheckBox_CheckedChanged;
+            lengthCheckBox.AutoSize = true;
+            lengthCheckBox.Location = new System.Drawing.Point(10, 520);
+            lengthCheckBox.Name = "lengthCheckBox";
+            lengthCheckBox.Size = new System.Drawing.Size(85, 19);
+            lengthCheckBox.TabIndex = 22;
+            lengthCheckBox.Text = "Boy Uzama";
+            lengthCheckBox.UseVisualStyleBackColor = true;
+            lengthCheckBox.CheckedChanged += lengthCheckBox_CheckedChanged;
             // 
-            // boySlider
+            // lengthSlider
             // 
-            boySlider.Location = new System.Drawing.Point(113, 520);
-            boySlider.Maximum = 3;
-            boySlider.Name = "boySlider";
-            boySlider.Size = new System.Drawing.Size(175, 45);
-            boySlider.TabIndex = 23;
-            boySlider.Visible = false;
+            lengthSlider.Location = new System.Drawing.Point(113, 520);
+            lengthSlider.Maximum = 3;
+            lengthSlider.Name = "lengthSlider";
+            lengthSlider.Size = new System.Drawing.Size(175, 45);
+            lengthSlider.TabIndex = 23;
+            lengthSlider.Visible = false;
             // 
             // speedupSlider
             // 
@@ -326,37 +330,37 @@
             Controls.Add(speeddownCheckBox);
             Controls.Add(speedupSlider);
             Controls.Add(speedupCheckBox);
-            Controls.Add(boySlider);
-            Controls.Add(boyCheckBox);
-            Controls.Add(label10);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(lengthSlider);
+            Controls.Add(lengthCheckBox);
+            Controls.Add(ekstraLabel);
+            Controls.Add(backButton);
+            Controls.Add(createButton);
             Controls.Add(pointBox);
-            Controls.Add(label9);
+            Controls.Add(pointLabel);
             Controls.Add(periodBox);
-            Controls.Add(label8);
-            Controls.Add(label7);
+            Controls.Add(rateLabel);
+            Controls.Add(lifetimeLabel);
             Controls.Add(lifetimeBox);
-            Controls.Add(label6);
-            Controls.Add(trackBar4);
-            Controls.Add(panel1);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(trackBar3);
-            Controls.Add(trackBar2);
-            Controls.Add(trackBar1);
-            Controls.Add(richTextBox1);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(alphaLabel);
+            Controls.Add(alphaTrackBar);
+            Controls.Add(argbPanel);
+            Controls.Add(blueLabel);
+            Controls.Add(greenLabel);
+            Controls.Add(redLabel);
+            Controls.Add(blueTrackBar);
+            Controls.Add(greenTrackBar);
+            Controls.Add(redTrackBar);
+            Controls.Add(descRichTextBox);
+            Controls.Add(descLabel);
+            Controls.Add(nameLabel);
             Controls.Add(nameBox);
             Name = "ConsumableForm";
             Text = "ConsumableForm";
-            ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)trackBar2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)trackBar3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)trackBar4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)boySlider).EndInit();
+            ((System.ComponentModel.ISupportInitialize)redTrackBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)greenTrackBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)blueTrackBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)alphaTrackBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)lengthSlider).EndInit();
             ((System.ComponentModel.ISupportInitialize)speedupSlider).EndInit();
             ((System.ComponentModel.ISupportInitialize)speeddownSlider).EndInit();
             ResumeLayout(false);
@@ -366,29 +370,29 @@
         #endregion
 
         private System.Windows.Forms.TextBox nameBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.TrackBar trackBar2;
-        private System.Windows.Forms.TrackBar trackBar3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TrackBar trackBar4;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Label descLabel;
+        private System.Windows.Forms.RichTextBox descRichTextBox;
+        private System.Windows.Forms.TrackBar redTrackBar;
+        private System.Windows.Forms.TrackBar greenTrackBar;
+        private System.Windows.Forms.TrackBar blueTrackBar;
+        private System.Windows.Forms.Label redLabel;
+        private System.Windows.Forms.Label greenLabel;
+        private System.Windows.Forms.Label blueLabel;
+        private System.Windows.Forms.Panel argbPanel;
+        private System.Windows.Forms.TrackBar alphaTrackBar;
+        private System.Windows.Forms.Label alphaLabel;
         private System.Windows.Forms.TextBox lifetimeBox;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lifetimeLabel;
+        private System.Windows.Forms.Label rateLabel;
         private System.Windows.Forms.TextBox periodBox;
         private System.Windows.Forms.TextBox pointBox;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.CheckBox boyCheckBox;
-        private System.Windows.Forms.TrackBar boySlider;
+        private System.Windows.Forms.Label pointLabel;
+        private System.Windows.Forms.Button createButton;
+        private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.Label ekstraLabel;
+        private System.Windows.Forms.CheckBox lengthCheckBox;
+        private System.Windows.Forms.TrackBar lengthSlider;
         private System.Windows.Forms.TrackBar speedupSlider;
         private System.Windows.Forms.CheckBox speedupCheckBox;
         private System.Windows.Forms.TrackBar speeddownSlider;

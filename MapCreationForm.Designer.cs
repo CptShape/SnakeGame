@@ -28,122 +28,122 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new System.Windows.Forms.Panel();
-            textBox1 = new System.Windows.Forms.TextBox();
-            label1 = new System.Windows.Forms.Label();
-            button1 = new System.Windows.Forms.Button();
-            button2 = new System.Windows.Forms.Button();
-            pictureBox1 = new System.Windows.Forms.PictureBox();
-            label2 = new System.Windows.Forms.Label();
-            button3 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            mapPanel = new System.Windows.Forms.Panel();
+            nameBox = new System.Windows.Forms.TextBox();
+            nameLabel = new System.Windows.Forms.Label();
+            createButton = new System.Windows.Forms.Button();
+            backButton = new System.Windows.Forms.Button();
+            pictureBox = new System.Windows.Forms.PictureBox();
+            pictureLabel = new System.Windows.Forms.Label();
+            clearButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // mapPanel
             // 
-            panel1.BackColor = System.Drawing.SystemColors.ControlDark;
-            panel1.Location = new System.Drawing.Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(600, 600);
-            panel1.TabIndex = 0;
-            panel1.MouseClick += panel1_MouseClick;
+            mapPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            mapPanel.Location = new System.Drawing.Point(0, 0);
+            mapPanel.Name = "mapPanel";
+            mapPanel.Size = new System.Drawing.Size(600, 600);
+            mapPanel.TabIndex = 0;
+            mapPanel.MouseClick += mapPanel_MouseClick;
             // 
             // nameBox
             // 
-            textBox1.Location = new System.Drawing.Point(782, 29);
-            textBox1.Name = "nameBox";
-            textBox1.Size = new System.Drawing.Size(100, 23);
-            textBox1.TabIndex = 1;
-            textBox1.KeyPress += textBox1_KeyPress;
+            nameBox.Location = new System.Drawing.Point(782, 29);
+            nameBox.Name = "nameBox";
+            nameBox.Size = new System.Drawing.Size(100, 23);
+            nameBox.TabIndex = 1;
+            nameBox.KeyPress += nameBox_KeyPress;
             // 
-            // label1
+            // nameLabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(710, 32);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(29, 15);
-            label1.TabIndex = 2;
-            label1.Text = "Isim";
+            nameLabel.AutoSize = true;
+            nameLabel.Location = new System.Drawing.Point(710, 32);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new System.Drawing.Size(29, 15);
+            nameLabel.TabIndex = 2;
+            nameLabel.Text = "Isim";
             // 
-            // button1
+            // createButton
             // 
-            button1.Location = new System.Drawing.Point(877, 533);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(75, 23);
-            button1.TabIndex = 3;
-            button1.Text = "Olustur";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            createButton.Location = new System.Drawing.Point(877, 533);
+            createButton.Name = "createButton";
+            createButton.Size = new System.Drawing.Size(75, 23);
+            createButton.TabIndex = 3;
+            createButton.Text = "Olustur";
+            createButton.UseVisualStyleBackColor = true;
+            createButton.Click += createButton_Click;
             // 
-            // button2
+            // backButton
             // 
-            button2.Location = new System.Drawing.Point(652, 533);
-            button2.Name = "button2";
-            button2.Size = new System.Drawing.Size(75, 23);
-            button2.TabIndex = 4;
-            button2.Text = "Geri";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            backButton.Location = new System.Drawing.Point(652, 533);
+            backButton.Name = "backButton";
+            backButton.Size = new System.Drawing.Size(75, 23);
+            backButton.TabIndex = 4;
+            backButton.Text = "Geri";
+            backButton.UseVisualStyleBackColor = true;
+            backButton.Click += backButton_Click;
             // 
-            // pictureBox1
+            // pictureBox
             // 
-            pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            pictureBox1.Location = new System.Drawing.Point(652, 162);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(300, 300);
-            pictureBox1.TabIndex = 5;
-            pictureBox1.TabStop = false;
-            pictureBox1.DragDrop += pictureBox1_DragDrop;
-            pictureBox1.DragEnter += pictureBox1_DragEnter;
+            pictureBox.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            pictureBox.Location = new System.Drawing.Point(652, 162);
+            pictureBox.Name = "pictureBox";
+            pictureBox.Size = new System.Drawing.Size(300, 300);
+            pictureBox.TabIndex = 5;
+            pictureBox.TabStop = false;
+            pictureBox.DragDrop += pictureBox_DragDrop;
+            pictureBox.DragEnter += pictureBox_DragEnter;
             // 
-            // label2
+            // pictureLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(764, 135);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(84, 15);
-            label2.TabIndex = 6;
-            label2.Text = "Previwe Image";
+            pictureLabel.AutoSize = true;
+            pictureLabel.Location = new System.Drawing.Point(764, 135);
+            pictureLabel.Name = "pictureLabel";
+            pictureLabel.Size = new System.Drawing.Size(52, 15);
+            pictureLabel.TabIndex = 6;
+            pictureLabel.Text = "Fotoğraf";
             // 
-            // button3
+            // clearButton
             // 
-            button3.Location = new System.Drawing.Point(652, 131);
-            button3.Name = "button3";
-            button3.Size = new System.Drawing.Size(75, 23);
-            button3.TabIndex = 7;
-            button3.Text = "Temizle";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            clearButton.Location = new System.Drawing.Point(652, 131);
+            clearButton.Name = "clearButton";
+            clearButton.Size = new System.Drawing.Size(75, 23);
+            clearButton.TabIndex = 7;
+            clearButton.Text = "Temizle";
+            clearButton.UseVisualStyleBackColor = true;
+            clearButton.Click += clearButton_Click;
             // 
             // MapCreationForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(991, 601);
-            Controls.Add(button3);
-            Controls.Add(label2);
-            Controls.Add(pictureBox1);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(label1);
-            Controls.Add(textBox1);
-            Controls.Add(panel1);
+            Controls.Add(clearButton);
+            Controls.Add(pictureLabel);
+            Controls.Add(pictureBox);
+            Controls.Add(backButton);
+            Controls.Add(createButton);
+            Controls.Add(nameLabel);
+            Controls.Add(nameBox);
+            Controls.Add(mapPanel);
             Name = "MapCreationForm";
             Text = "MapCreationForm";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel mapPanel;
+        private System.Windows.Forms.TextBox nameBox;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Button createButton;
+        private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.Label pictureLabel;
+        private System.Windows.Forms.Button clearButton;
     }
 }
